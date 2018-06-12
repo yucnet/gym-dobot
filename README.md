@@ -7,10 +7,10 @@ Currently consists of -
  - DobotPush
  
  Requires - 
-  - Python 3.6
-  - Gym > 0.10.3
-  - Mujoco > 1.5
- 
+  - python 3.6
+  - gym > 0.10.3
+  - mujoco_py > 1.5
+  - mujoco - mjpro150 
 
 
 ## Installation
