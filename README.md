@@ -13,5 +13,3 @@ Currently consists of -
 cd gym-dobot
 pip install -e .
 ```
-
-# WIP
