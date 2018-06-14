@@ -74,7 +74,9 @@ class DobotEnv(robot_env.RobotEnv):
         #pos_ctrl_low = [-0.05,-0.05,-0.05]
         #pos_ctrl_high = [0.05,0.05,0.05]
         #pos_ctrl = np.clip(pos_ctrl,pos_ctrl_low,pos_ctrl_high)
-        pos_ctrl *= 0.05 # limit maximum change in position
+        pos_ctrl *= 0.2 # limit maximum change in position
+        pos_ctrl = np.add(pos_ctrl,[0.8,0.75,0.27]) 
+        #pos_ctrl *= 0.05
         rot_ctrl = [0.707, 0, 0, 0.707]  # fixed rotation of the end effector, expressed as a quaternion
         gripper_ctrl = np.array([gripper_ctrl, -gripper_ctrl])
         assert gripper_ctrl.shape == (2,)
