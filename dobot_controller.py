@@ -9,6 +9,7 @@ from gym_dobot.envs import DobotPickAndPlaceEnv
 env = DobotPickAndPlaceEnv()
 env.render()
 
+
 def update_env(event):
     action = np.array([w1.get(),w2.get(),w3.get(),w4.get()])
     observation, reward, done, info = env.step(action)
