@@ -24,20 +24,20 @@
 						<inertial diaginertia="1.2869 1.2236 0.9868" mass="0.85" pos="0 0 0"></inertial>
 						<geom mesh="dobot:front_arm_link" name="dobot:front_arm_link" pos = "0 0 0" material="arm_mat" class="dobot:white"></geom>
 						<joint name="dobot:elbow_flex" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.658 0.174" limited="true"/>
-						<body name="dobot:gripper_link" pos="0 -0.26 -0.136" euler="0 0 1.57">
+						<body name="dobot:gripper_link" pos="0 -0.26 -0.136" euler="0 0 0">
 							<inertial diaginertia="1.2869 1.2236 0.9868" mass="0.3294" pos="0 0 0"></inertial>
 							<geom mesh="dobot:gripper_link" name="dobot:gripper_link" pos = "0 0 0" material="gripper_mat" class="dobot:white"></geom>
-							<joint name="dobot:wrist_flex" type="hinge" pos="0 0 0" axis="0 1 0"/>
+							<joint name="dobot:wrist_flex" type="hinge" pos="0 0 0" axis="1 0 0"/>
 
-							<body childclass="dobot:fetchGripper" name="dobot:l_gripper_link" pos="-0.1425 0 -0.09" euler="0 0 3.14">
+							<body childclass="dobot:fetchGripper" name="dobot:l_gripper_link" pos="0 -0.1425 -0.09" euler="0 0 0">
 								<inertial diaginertia="1.2869 1.2236 0.9868" mass="0.3294" pos="0 0 0"></inertial>
 								<geom mesh="dobot:l_gripper_link" name="dobot:l_gripper_link" pos = "0 0 0" material="gripper_mat" class="dobot:white"></geom>
-								<joint name="dobot:l_gripper_joint" type="slide" axis="1 0 0" limited="true" range="0 0.025"/>
+								<joint name="dobot:l_gripper_joint" type="slide" axis="0 1 0" limited="true" range="-0.025 0"/>
 							</body>
-							<body childclass="dobot:fetchGripper" name="dobot:r_gripper_link" pos="-0.1025 0 -0.09" euler="0 0 3.14">
+							<body childclass="dobot:fetchGripper" name="dobot:r_gripper_link" pos="0 -0.1025 -0.09" euler="0 0 0">
 								<inertial diaginertia="1.2869 1.2236 0.9868" mass="0.3294" pos="0 0 0"></inertial>
 								<geom mesh="dobot:r_gripper_link" name="dobot:r_gripper_link" pos = "0 0 0" material="gripper_mat" class="dobot:white"></geom>
-								<joint name="dobot:r_gripper_joint" type="slide" axis="1 0 0" limited="true" range = "-0.025 0"/>
+								<joint name="dobot:r_gripper_joint" type="slide" axis="0 1 0" limited="true" range = "0 0.025"/>
 							</body>
 							<site name="dobot:grip" pos="-0.123 0 -0.06" rgba="1 1 1 0" size="0.02 0.02 0.02"></site>
 						</body>
