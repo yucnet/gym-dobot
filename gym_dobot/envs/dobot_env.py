@@ -75,7 +75,7 @@ class DobotEnv(robot_env.RobotEnv):
         #pos_ctrl_high = [0.05,0.05,0.05]
         #pos_ctrl = np.clip(pos_ctrl,pos_ctrl_low,pos_ctrl_high)
         pos_ctrl *= 0.05 # limit maximum change in position
-        rot_ctrl = [1, 0, 0, 0]  # fixed rotation of the end effector, expressed as a quaternion
+        rot_ctrl = [-1, 0, 0, 0]  # fixed rotation of the end effector, expressed as a quaternion
         gripper_ctrl = np.array([gripper_ctrl, -gripper_ctrl])
         assert gripper_ctrl.shape == (2,)
         if self.block_gripper:
@@ -177,7 +177,7 @@ class DobotEnv(robot_env.RobotEnv):
 
         # Move end effector into position.
         gripper_target = np.array([0, 0.15, -0.431 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('dobot:grip')
-        gripper_rotation = np.array([1, 0., 0., 0])
+        gripper_rotation = np.array([-1, 0., 0., 0])
         self.sim.data.set_mocap_pos('dobot:mocap', gripper_target)
         self.sim.data.set_mocap_quat('dobot:mocap', gripper_rotation)
         for _ in range(10):
