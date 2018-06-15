@@ -1,9 +1,9 @@
 <mujoco>
 	<body mocap="true" name="dobot:mocap" pos="1 1 1">
 		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.7" size="0.005 0.005 0.005" type="box"></geom>
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 1" size="1 0.005 0.005" type="box"></geom>
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 1" size="0.005 1 0.001" type="box"></geom>
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 1" size="0.005 0.005 1" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="1 0.005 0.005" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="0.005 1 0.001" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="0.005 0.005 1" type="box"></geom>
 
 	</body>
 	<body childclass="dobot:fetch" name="dobot:base_link" pos="0 0 0.1" euler="0 0 0">
@@ -39,7 +39,7 @@
 								<geom mesh="dobot:r_gripper_link" name="dobot:r_gripper_link" pos = "0 0 0" material="gripper_mat" class="dobot:white"></geom>
 								<joint name="dobot:r_gripper_joint" type="slide" axis="0 1 0" limited="true" range = "0 0.025"/>
 							</body>
-							<site name="dobot:grip" pos="0 -0.123 -0.06" rgba="1 1 1 1" size="0.02 0.02 0.02"></site>
+							<site name="dobot:grip" pos="0 -0.123 -0.06" rgba="1 1 1 0" size="0.02 0.02 0.02"></site>
 						</body>
 					</body>
 				</body>

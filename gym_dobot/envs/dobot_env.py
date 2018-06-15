@@ -146,6 +146,7 @@ class DobotEnv(robot_env.RobotEnv):
             object_xpos = self.initial_gripper_xpos[:2]
             while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.1:
                 object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
+                #object_xpos[:2] = np.clip(object_xpos,[0.6,0.55],[1.0,0.95,0.47])
             object_qpos = self.sim.data.get_joint_qpos('object0:joint')
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
@@ -176,7 +177,8 @@ class DobotEnv(robot_env.RobotEnv):
         self.sim.forward()
 
         # Move end effector into position.
-        gripper_target = np.array([0, 0.15, -0.431 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('dobot:grip')
+        #gripper_target = np.array([0.001, -1.4, -0.431 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('dobot:grip')
+        gripper_target = np.array([0.8,0.26,0.27])
         gripper_rotation = np.array([-1, 0., 0., 0])
         self.sim.data.set_mocap_pos('dobot:mocap', gripper_target)
         self.sim.data.set_mocap_quat('dobot:mocap', gripper_rotation)
@@ -185,5 +187,6 @@ class DobotEnv(robot_env.RobotEnv):
 
         # Extract information for sampling goals.
         self.initial_gripper_xpos = self.sim.data.get_site_xpos('dobot:grip').copy()
+        #print(self.initial_gripper_xpos)
         if self.has_object:
             self.height_offset = self.sim.data.get_site_xpos('object0')[2]

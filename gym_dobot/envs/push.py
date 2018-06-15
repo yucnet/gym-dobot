@@ -13,6 +13,6 @@ class DobotPushEnv(dobot_env.DobotEnv, utils.EzPickle):
         dobot_env.DobotEnv.__init__(
             self, 'dobot/push.xml', has_object=True, block_gripper=True, n_substeps=20,
             gripper_extra_height=0.0, target_in_the_air=False, target_offset=0.0,
-            obj_range=0.15, target_range=0.15, distance_threshold=0.05,
+            obj_range=0.2, target_range=0.2, distance_threshold=0.05,
             initial_qpos=initial_qpos, reward_type=reward_type)
         utils.EzPickle.__init__(self)
