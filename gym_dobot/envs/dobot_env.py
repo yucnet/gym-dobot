@@ -186,7 +186,8 @@ class DobotEnv(robot_env.RobotEnv):
             self.sim.step()
 
         # Extract information for sampling goals.
-        self.initial_gripper_xpos = self.sim.data.get_site_xpos('dobot:grip').copy()
+        #self.initial_gripper_xpos = self.sim.data.get_site_xpos('dobot:grip').copy()
+        self.initial_gripper_xpos = np.array([0.8, 0.685, 0.2975])
         #print(self.initial_gripper_xpos)
         if self.has_object:
             self.height_offset = self.sim.data.get_site_xpos('object0')[2]
