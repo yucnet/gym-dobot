@@ -33,8 +33,8 @@
 
 		<body name="object0" pos="0.025 0.025 0.025">
 			<joint name="object0:joint" type="free" damping="0.01"></joint>
-			<geom size="0.015 0.015 0.015" type="box" condim="3" name="object0" material="block_mat" mass="2"></geom>
-			<site name="object0" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere"></site>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object0" material="block_mat" mass="2"></geom>
+			<site name="object0" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
 		</body>
 
 		<light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"></light>
