@@ -26,6 +26,15 @@
 						<camera euler="-1.570796 0 0" fovy="50" name="top_cam" pos="0 0 -0.32"></camera>
 					</body>
 				</body>
+				<body name="tray" pos = "0 -0.215 0.01">
+					<geom size="0.355 0.205 0.001" type="box" mass="300" material="green_block_mat"></geom>
+					<geom size="0.355 0.005 0.025" type="box" mass="300" pos="0 0.205 0.025" material="green_block_mat"></geom>
+					<geom size="0.355 0.005 0.025" type="box" mass="300" pos="0 -0.205 0.025" material="green_block_mat"></geom>
+					<geom size="0.005 0.205 0.025" type="box" mass="300" pos="0.355 0 0.025" material="green_block_mat"></geom>
+					<geom size="0.005 0.205 0.025" type="box" mass="300" pos="-0.355 0 0.025" material="green_block_mat"></geom>
+
+				</body>
+				
 			</body>
 		</body>
 
@@ -34,9 +43,66 @@
 
 		<body name="object0" pos="0.025 0.025 0.025">
 			<joint name="object0:joint" type="free" damping="0.01"></joint>
-			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object0" material="block_mat" mass="2"></geom>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object0" material="red_block_mat" mass="2"></geom>
 			<site name="object0" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
 		</body>
+
+		<body name="object1" pos="0.025 0.125 0.025">
+			<joint name="object1:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object1" material="yellow_block_mat" mass="2"></geom>
+			<site name="object1" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object2" pos="0.025 0.175 0.025">
+			<joint name="object2:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object2" material="yellow_block_mat" mass="2"></geom>
+			<site name="object2" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object3" pos="0.025 0.225 0.025">
+			<joint name="object3:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object3" material="yellow_block_mat" mass="2"></geom>
+			<site name="object3" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object4" pos="0.025 0.275 0.025">
+			<joint name="object4:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object4" material="yellow_block_mat" mass="2"></geom>
+			<site name="object4" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object5" pos="0.025 0.325 0.025">
+			<joint name="object5:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object5" material="yellow_block_mat" mass="2"></geom>
+			<site name="object5" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object6" pos="0.025 0.375 0.025">
+			<joint name="object6:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object6" material="yellow_block_mat" mass="2"></geom>
+			<site name="object6" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object7" pos="0.025 0.425 0.025">
+			<joint name="object7:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object7" material="yellow_block_mat" mass="2"></geom>
+			<site name="object7" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object8" pos="0.025 0.475 0.025">
+			<joint name="object8:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object8" material="yellow_block_mat" mass="2"></geom>
+			<site name="object8" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object9" pos="0.025 0.525 0.025">
+			<joint name="object9:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object9" material="yellow_block_mat" mass="2"></geom>
+			<site name="object9" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object10" pos="0.025 0.575 0.025">
+			<joint name="object10:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object10" material="yellow_block_mat" mass="2"></geom>
+			<site name="object10" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		<body name="object11" pos="0.025 0.625 0.025">
+			<joint name="object11:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object11" material="yellow_block_mat" mass="2"></geom>
+			<site name="object11" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+		
 
 		<light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"></light>
 	</worldbody>
