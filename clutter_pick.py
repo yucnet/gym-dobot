@@ -1,7 +1,7 @@
 import gym
-from gym_dobot.envs import DobotClutterPickEnv
+from gym_dobot.envs import DobotClutterPickAndPlaceEnv
 
-env = DobotClutterPickEnv(clutter_num=10)
+env = DobotClutterPickAndPlaceEnv(clutter_num=10)
 while True:
     observation = env.reset()
     for i in range(50):
