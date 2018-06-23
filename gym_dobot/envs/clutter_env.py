@@ -43,7 +43,7 @@ class DobotClutterEnv(robot_env.RobotEnv):
         self.target_range = target_range
         self.distance_threshold = distance_threshold
         self.reward_type = reward_type
-        assert clutter_num <= 10
+        assert clutter_num <= 40
         self.clutter_num = clutter_num
 
         super(DobotClutterEnv, self).__init__(
@@ -143,6 +143,7 @@ class DobotClutterEnv(robot_env.RobotEnv):
 
     def _reset_sim(self):
         self.sim.set_state(self.initial_state)
+        self.clutter()
 
         # Randomize start position of object.
         if self.has_object:
@@ -155,12 +156,12 @@ class DobotClutterEnv(robot_env.RobotEnv):
             object_qpos[:2] = object_xpos
             object_qpos[2] += 0.005
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
-            self.clutter(object_qpos)
+            
 
         self.sim.forward()
         return True
 
-    def clutter(self,object_qpos):
+    def clutter(self):
         count = self.clutter_num
         for i in range(1,count+1):
             object_name = "object{}:joint".format(i)
