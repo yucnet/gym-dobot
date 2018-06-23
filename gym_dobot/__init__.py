@@ -19,3 +19,10 @@ register(
     kwargs=kwargs,
     max_episode_steps=50,
 )
+
+register(
+    id='DobotClutterPick{}-v0'.format(suffix),
+    entry_point='gym_dobot.envs:DobotClutterPickEnv',
+    kwargs=kwargs,
+    max_episode_steps=50,
+)
