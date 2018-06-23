@@ -2,6 +2,12 @@
     <asset>
         <texture type="skybox" builtin="gradient" rgb1="0 0 0" rgb2="0.5 0.5 1" width="32" height="32"></texture>
         <texture name="texture_block" file="block.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
+        <texture name="red_block" file="block_red.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
+        <texture name="yellow_block" file="block_yellow.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
+        <texture name="green_block" file="block_green.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
+        <texture name="blue_block" file="block_blue.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
+        <texture name="pink_block" file="block_pink.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
+        <texture name="magenta_block" file="block_magenta.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
         <texture name="arm_tex" file="arm.png" type="2d"></texture>
         <texture name="gripper_tex" file="gripper.png" type="2d"></texture>
 
