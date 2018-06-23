@@ -1,13 +1,16 @@
 # gym-dobot
-Open AI Gym Environment for the Dobot Magician Robotic Arm.
-Based on the fetch environments provided by gym.
+Open AI Gym Environment for the [Dobot Magician Robotic Arm](https://www.dobot.cc/dobot-magician/product-overview.html).
+Based on the [fetch](https://gym.openai.com/envs/#robotics) environments provided by gym.
 
 Currently consists of -
- - DobotPickAndPlace
- - DobotPush
+ - DobotPickAndPlaceEnv
+ - DobotPushEnv
+ 
+And additionally,
+ - DobotClutterPickEnv (A variation of PickAndPlaceEnv with added clutter blocks)
  
  Requires - 
-  - python 3.6
+  - python 3 (Tested on Python 3.6)
   - gym > 0.10.3
   - mujoco_py > 1.5
   - mujoco - mjpro150 
@@ -33,3 +36,4 @@ for i_episode in range(10):
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
 ```
+Alternatively, directly run ```push.py```,```pickAndPlace.py``` or ```clutter.py``` which call the respective environments.
