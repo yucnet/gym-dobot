@@ -8,16 +8,16 @@ def goal_distance(goal_a, goal_b):
     return np.linalg.norm(goal_a - goal_b, axis=-1)
 
 
-class ClutterEnv(robot_env.RobotEnv):
-    """Superclass for all Dobot environments.
+class DobotClutterEnv(robot_env.RobotEnv):
+    """Superclass for all DobotClutter environments.
     """
 
     def __init__(
         self, model_path, n_substeps, gripper_extra_height, block_gripper,
         has_object, target_in_the_air, target_offset, obj_range, target_range,
-        distance_threshold, initial_qpos, reward_type,
+        distance_threshold, initial_qpos, reward_type,clutter_num
     ):
-        """Initializes a new Dobot environment.
+        """Initializes a new DobotClutter environment.
 
         Args:
             model_path (string): path to the environments XML file
@@ -31,7 +31,8 @@ class ClutterEnv(robot_env.RobotEnv):
             target_range (float): range of a uniform distribution for sampling a target
             distance_threshold (float): the threshold after which a goal is considered achieved
             initial_qpos (dict): a dictionary of joint names and values that define the initial configuration
-            reward_type ('sparse' or 'dense'): the reward type, i.e. sparse or dense
+            reward_type ('sparse' or 'dense'): the reward type, i.e. sparse or 
+            clutter_num (int 0-10) : the number of clutter objects to use
         """
         self.gripper_extra_height = gripper_extra_height
         self.block_gripper = block_gripper
@@ -42,8 +43,10 @@ class ClutterEnv(robot_env.RobotEnv):
         self.target_range = target_range
         self.distance_threshold = distance_threshold
         self.reward_type = reward_type
+        assert clutter_num <= 10
+        self.clutter_num = clutter_num
 
-        super(ClutterEnv, self).__init__(
+        super(DobotClutterEnv, self).__init__(
             model_path=model_path, n_substeps=n_substeps, n_actions=4,
             initial_qpos=initial_qpos)
 
@@ -152,11 +155,29 @@ class ClutterEnv(robot_env.RobotEnv):
             object_qpos[:2] = object_xpos
             object_qpos[2] += 0.005
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
-            object_qpos = self.sim.data.get_joint_qpos('object0:joint')
-            print(object_qpos)
+            self.clutter(object_qpos)
 
         self.sim.forward()
         return True
+
+    def clutter(self,object_qpos):
+        count = self.clutter_num
+        for i in range(1,count+1):
+            object_name = "object{}:joint".format(i)
+            object_xpos = self.initial_gripper_xpos[:2]
+            while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.1:
+                object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
+            object_qpos = self.sim.data.get_joint_qpos(object_name)
+            assert object_qpos.shape == (7,)
+            object_qpos[:2] = object_xpos
+            object_qpos[2] += self.np_random.uniform(0.005, 0.15)
+            self.sim.data.set_joint_qpos(object_name, object_qpos)
+            
+
+
+
+        pass
+
 
     def _sample_goal(self):
         if self.has_object:
