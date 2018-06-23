@@ -21,8 +21,15 @@ register(
 )
 
 register(
-    id='DobotClutterPick{}-v0'.format(suffix),
-    entry_point='gym_dobot.envs:DobotClutterPickEnv',
+    id='DobotClutterPickAndPlace{}-v0'.format(suffix),
+    entry_point='gym_dobot.envs:DobotClutterPickAndPlaceEnv',
+    kwargs=kwargs,
+    max_episode_steps=50,
+)
+
+register(
+    id='DobotClutterPush{}-v0'.format(suffix),
+    entry_point='gym_dobot.envs:DobotClutterPushEnv',
     kwargs=kwargs,
     max_episode_steps=50,
 )

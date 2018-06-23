@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<compiler angle="radian" coordinate="local" meshdir="../stls/dobot" texturedir="../textures"></compiler>
+	<option timestep="0.002">
+		<flag warmstart="enable"></flag>
+	</option>
+
+	<size njmax="1500" nconmax="500"></size>
+
+	<include file="shared_push.xml"></include>
+	
+	<worldbody>
+		<geom name="mocap_bound" conaffinity="0" contype="0" pos="0.8 0.75 0.38" size="0.2 0.2 0.2" type="box" rgba="0 1 0 0.2" condim="3" material="floor_mat" group="2"></geom>
+		<geom name="grip_bound" conaffinity="0" contype="0" pos="0.8 0.685 0.2975" size="0.335 0.185 0.2825" type="box" rgba="1 1 1 0.3" condim="3" material="floor_mat" group="2"></geom>
+		<geom name="floor0" pos="0.8 0.9 0" size="0.85 0.70 1" type="plane" condim="3" material="floor_mat"></geom>
+		<body name="floor0" pos="0.8 0.75 0">
+			<site name="target0" pos="0 0 0.5" size="0.02 0.02 0.02" rgba="0 0 1 1" type="sphere"></site>
+			<body pos="0 0.15 0" name="table0">
+				<geom size="0.55 0.7 0.01" type="box" mass="2000" material="table_mat"></geom>
+				<!--joint name="table0:slide0" type="slide" axis="1 0 0" damping="10000" pos="0 0 0"></joint>
+				<joint name="table0:slide1" type="slide" axis="0 1 0" damping="10000" pos="0 0 0"></joint>
+				<joint name="table0:slide2" type="slide" axis="0 0 1" damping="10000" pos="0 0 0"></joint -->
+				<body name="base_rod" pos = "0 -0.65 0.5">
+					<geom size="0.015 0.49" type="cylinder" material="puck_mat"></geom>
+					<body name="clamp_rod" pos = "0 0.1 0.45" euler = "1.57 0 0">
+						<geom size="0.015 0.25" type="cylinder" material="puck_mat"></geom>
+						<site name="target" pos="0 0 -0.32" size="0.02 0.02 0.02" rgba="1 0 0 0" type="sphere"></site>
+						<camera euler="-1.570796 0 0" fovy="50" name="top_cam" pos="0 0 -0.32"></camera>
+					</body>
+				</body>
+				<body name="tray" pos = "0 -0.215 0.01">
+					<geom size="0.355 0.205 0.001" type="box" mass="300" material="green_block_mat"></geom>
+					<geom size="0.355 0.005 0.045" type="box" mass="300" pos="0 0.205 0.045" material="green_block_mat"></geom>
+					<geom size="0.355 0.005 0.045" type="box" mass="300" pos="0 -0.205 0.045" material="green_block_mat"></geom>
+					<geom size="0.005 0.205 0.045" type="box" mass="300" pos="0.355 0 0.045" material="green_block_mat"></geom>
+					<geom size="0.005 0.205 0.045" type="box" mass="300" pos="-0.355 0 0.045" material="green_block_mat"></geom>
+				</body>
+			</body>
+		</body>
+
+		<include file="robot_push.xml"></include>
+
+
+		<body name="object0" pos="0.025 0.025 0.025">
+			<joint name="object0:joint" type="free" damping="0.01"></joint>
+			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object0" material="blue_block_mat" mass="2"></geom>
+			<site name="object0" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+		</body>
+
+		<include file="clutter.xml"></include>
+
+
+		<light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"></light>
+	</worldbody>
+
+
+	
+
+</mujoco>
