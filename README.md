@@ -5,9 +5,10 @@ Based on the [fetch](https://gym.openai.com/envs/#robotics) environments provide
 Currently consists of -
  - DobotPickAndPlaceEnv
  - DobotPushEnv
- 
-And additionally,
- - DobotClutterPickEnv (A variation of PickAndPlaceEnv with added clutter blocks)
+ - DobotClutterPickAndPlaceEnv
+ - DobotClutterPushEnv
+
+The ClutterEnv variations add additonal blocks as clutter. The number of blocks can be changed by setting ```clutter_num``` while creating the environment.(Max=40,Default=20)
  
  Requires - 
   - python 3 (Tested on Python 3.6)
@@ -26,14 +27,14 @@ pip install -e .
 Test everything is working by running the following snippet - 
 ```python
 import gym
-from gym_dobot.envs import DobotPickAndPlaceEnv
+from gym_dobot.envs import DobotClutterPickAndPlaceEnv
 
-env = DobotPickAndPlaceEnv()
-for i_episode in range(10):
+env = DobotClutterPickAndPlaceEnv(clutter_num=10)
+for i_episode in range(50):
     observation = env.reset()
-    while True:
+    for time_step in range(50):
         env.render()
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
 ```
-Alternatively, directly run ```push.py```,```pickAndPlace.py``` or ```clutter.py``` which call the respective environments.
+Alternatively, directly run ```pick.py```,```push.py```, ```clutter_pick.py``` or ```clutter_push.py``` which call the respective environments.
