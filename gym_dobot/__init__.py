@@ -6,6 +6,14 @@ for reward_type in ['sparse', 'dense']:
         'reward_type': reward_type,
     }
 
+
+register(
+    id='DobotReach{}-v0'.format(suffix),
+    entry_point='gym_dobot.envs:DobotReachEnv',
+    kwargs=kwargs,
+    max_episode_steps=50,
+)
+
 register(
     id='DobotPush{}-v0'.format(suffix),
     entry_point='gym_dobot.envs:DobotPushEnv',

@@ -5,6 +5,7 @@ Based on the [fetch](https://gym.openai.com/envs/#robotics) environments provide
 Currently consists of -
  - DobotPickAndPlaceEnv
  - DobotPushEnv
+ - DobotReachEnv
  - DobotClutterPickAndPlaceEnv
  - DobotClutterPushEnv
 
@@ -37,4 +38,4 @@ for i_episode in range(50):
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
 ```
-Alternatively, directly run ```pick.py```,```push.py```, ```clutter_pick.py``` or ```clutter_push.py``` which call the respective environments.
+Alternatively, directly run ```pick.py```,```push.py```,```reach.py```, ```clutter_pick.py``` or ```clutter_push.py``` which call the respective environments.
