@@ -6,8 +6,8 @@ from gym_dobot.envs import DobotPickAndPlaceEnv, DobotPushEnv
 
 
 
-#env = DobotPickAndPlaceEnv()
-env = DobotPushEnv()
+env = DobotPickAndPlaceEnv()
+#env = DobotPushEnv()
 env.render()
 
 def update_env(event):
@@ -27,6 +27,10 @@ w3.pack()
 w4 = Scale(root, from_=-1, to=1, orient=HORIZONTAL,label="Gripper Cont",resolution=0.01,command=update_env)
 w4.pack()
 
+w1.set(1)
+w2.set(1)
+w3.set(1)
+w4.set(1)
 while True:
     env.render()
     root.update()
