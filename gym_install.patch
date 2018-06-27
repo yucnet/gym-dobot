@@ -1,0 +1,69 @@
+diff --git a/gym/envs/__init__.py b/gym/envs/__init__.py
+index 4648f07..0b38d92 100644
+--- a/gym/envs/__init__.py
++++ b/gym/envs/__init__.py
+@@ -333,6 +333,44 @@ for reward_type in ['sparse', 'dense']:
+         max_episode_steps=50,
+     )
+ 
++    # Dobot
++    register(
++        id='DobotReach{}-v1'.format(suffix),
++        entry_point='gym.envs.robotics:DobotReachEnv',
++        kwargs=kwargs,
++        max_episode_steps=50,
++    )
++
++    register(
++        id='DobotPush{}-v1'.format(suffix),
++        entry_point='gym.envs.robotics:DobotPushEnv',
++        kwargs=kwargs,
++        max_episode_steps=50,
++    )
++
++    register(
++        id='DobotPickAndPlace{}-v1'.format(suffix),
++        entry_point='gym.envs.robotics:DobotPickAndPlaceEnv',
++        kwargs=kwargs,
++        max_episode_steps=50,
++    )
++
++    register(
++        id='DobotClutterPickAndPlace{}-v1'.format(suffix),
++        entry_point='gym.envs.robotics:DobotClutterPickAndPlaceEnv',
++        kwargs=kwargs,
++        max_episode_steps=50,
++    )
++
++    register(
++        id='DobotClutterPush{}-v1'.format(suffix),
++        entry_point='gym.envs.robotics:DobotClutterPushEnv',
++        kwargs=kwargs,
++        max_episode_steps=50,
++    )
++
++
++
+     # Hand
+     register(
+         id='HandReach{}-v0'.format(suffix),
+@@ -531,3 +569,5 @@ register(
+     reward_threshold=20,
+     )
+ 
++
++
+diff --git a/gym/envs/robotics/__init__.py b/gym/envs/robotics/__init__.py
+index ee17769..b9fd3c1 100644
+--- a/gym/envs/robotics/__init__.py
++++ b/gym/envs/robotics/__init__.py
+@@ -8,3 +8,9 @@ from gym.envs.robotics.hand.reach import HandReachEnv
+ from gym.envs.robotics.hand.manipulate import HandBlockEnv
+ from gym.envs.robotics.hand.manipulate import HandEggEnv
+ from gym.envs.robotics.hand.manipulate import HandPenEnv
++
++from gym_dobot.envs.push import DobotPushEnv
++from gym_dobot.envs.pick_and_place import DobotPickAndPlaceEnv
++from gym_dobot.envs.clutter_pick_and_place import DobotClutterPickAndPlaceEnv
++from gym_dobot.envs.clutter_push import DobotClutterPushEnv
++from gym_dobot.envs.reach import DobotReachEnv
