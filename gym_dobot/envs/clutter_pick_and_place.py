@@ -3,7 +3,7 @@ from gym_dobot.envs import clutter_env
 
 
 class DobotClutterPickAndPlaceEnv(clutter_env.DobotClutterEnv, utils.EzPickle):
-    def __init__(self, reward_type='sparse',clutter_num=20):
+    def __init__(self, reward_type='sparse',clutter_num=40):
         initial_qpos = {
             'dobot:slide0': 0.8,
             'dobot:slide1': 1.2,
