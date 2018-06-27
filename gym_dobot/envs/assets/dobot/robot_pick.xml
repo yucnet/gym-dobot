@@ -39,7 +39,7 @@
 								<geom mesh="dobot:r_gripper_link" name="dobot:r_gripper_link" pos = "0 0 0" material="gripper_mat" class="dobot:white"></geom>
 								<joint name="dobot:r_gripper_joint" type="slide" axis="0 1 0" limited="true" range = "0 0.025"/>
 							</body>
-							<site name="dobot:grip" pos="0 -0.123 -0.06" rgba="1 1 1 0" size="0.02 0.02 0.02"></site>
+							<site name="dobot:grip" pos="0 -0.123 -0.14" rgba="1 1 1 0" size="0.02 0.02 0.02"></site>
 						</body>
 					</body>
 				</body>
