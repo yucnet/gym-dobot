@@ -142,30 +142,54 @@ class DobotEnv(robot_env.RobotEnv):
         self.sim.set_state(self.initial_state)
 
         # Randomize start position of object.
+        # if self.has_object:
+        #     object_xpos = self.initial_gripper_xpos[:2]
+        #     #while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.01:
+        #     object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
+        #     #object_xpos[:2] = np.clip(object_xpos,[0.6,0.55],[1.0,0.95,0.47])
+        #     object_qpos = self.sim.data.get_joint_qpos('object0:joint')
+        #     assert object_qpos.shape == (7,)
+        #     object_qpos[:2] = object_xpos
+        #     self.sim.data.set_joint_qpos('object0:joint', object_qpos)
+
         if self.has_object:
-            object_xpos = self.initial_gripper_xpos[:2]
-            #while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.01:
-            object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
-            #object_xpos[:2] = np.clip(object_xpos,[0.6,0.55],[1.0,0.95,0.47])
+            pos = np.array([0.8,0.685,0.22725])
+            size = np.array([0.335,0.165,0.21225])
+            up = pos + size
+            low = pos - size
+            object_xpos = np.array([self.np_random.uniform(low[0],up[0]),self.np_random.uniform(low[1],up[1])])
             object_qpos = self.sim.data.get_joint_qpos('object0:joint')
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
+            object_qpos[2] += 0.05
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
+            
 
         self.sim.forward()
         return True
 
     def _sample_goal(self):
+        # if self.has_object:
+        #     goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-self.target_range, self.target_range, size=3)
+        #     goal += self.target_offset
+        #     goal[2] = self.height_offset
+        #     if self.target_in_the_air and self.np_random.uniform() < 0.5:
+        #         goal[2] += self.np_random.uniform(0, 0.25)
+        # else:
+        #     goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-0.15, 0.15, size=3)
+        # return goal.copy()
+
+        pos = np.array([0.8,0.685,0.22725])
+        size = np.array([0.335,0.165,0.21225])
+        up = pos + size
+        low = pos - size
+        goal = np.array([self.np_random.uniform(low[0],up[0]),self.np_random.uniform(low[1],up[1]),0.032])
+
         if self.has_object:
-            goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-self.target_range, self.target_range, size=3)
-            goal += self.target_offset
-            goal[2] = self.height_offset
             if self.target_in_the_air and self.np_random.uniform() < 0.5:
                 goal[2] += self.np_random.uniform(0, 0.25)
-        else:
-            goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-0.15, 0.15, size=3)
-        return goal.copy()
 
+        return goal.copy()
     def _is_success(self, achieved_goal, desired_goal):
         d = goal_distance(achieved_goal, desired_goal)
         return (d < self.distance_threshold).astype(np.float32)
