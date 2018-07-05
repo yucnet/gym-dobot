@@ -31,7 +31,9 @@ env = DobotPickAndPlaceEnv()
 ```
 
 ## Gym Installation
-To access these environments from within your existing gym installation, they must be first registered as stated [here](https://github.com/openai/gym/tree/master/gym/envs#how-to-add-new-environments-to-gym-within-this-repo-not-recommended-for-new-environments).
+First follow the steps for Basic Installation.
+
+To access these environments from within your existing gym installation, they must first be registered. 
 
 If you have installed gym from their [git repository](https://github.com/openai/gym#installation) then you can directly register the environments by simply applying the patch provided in this repository.
 ```bash
@@ -39,6 +41,8 @@ If you have installed gym from their [git repository](https://github.com/openai/
 cd gym
 git apply /path/to/repo/gym-dobot/gym_install.patch
 ```
+Otherwise, follow the instructions stated [here](https://github.com/openai/gym/tree/master/gym/envs#how-to-add-new-environments-to-gym-within-this-repo-not-recommended-for-new-environments).
+
 ### Usage
 ```python
 import gym
@@ -47,4 +51,13 @@ env = gym.make("DobotPickAndPlaceEnv-v1")
 This is much more convenient as other packages such as [openai/baselines](https://github.com/openai/baselines) can be directly used with these dobot environments.
 
 ## Test
-Run ```pick.py``` / ```push.py``` / ```reach.py``` /  ```clutter_pick.py``` or ```clutter_push.py``` which call the respective environments.
+```bash
+# Basic Test
+python -m gym_dobot.run_env
+
+#To see additional options
+python -m gym_dobot.run_env --help
+
+#Advanced Usage Example
+python -m gym_dobot.run_env --env=DobotClutterPickAndPlaceEnv --steps=200 --clutter=40 
+```
