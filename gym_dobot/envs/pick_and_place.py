@@ -8,7 +8,7 @@ class DobotPickAndPlaceEnv(dobot_env.DobotEnv, utils.EzPickle):
             'dobot:slide0': 0.8,
             'dobot:slide1': 1.2,
             'dobot:slide2': -0.04,
-            'object0:joint': [1.25, 0.53, 0.821,  1., 0., 0., 0.],
+            'object0:joint': [1.25, 0.53, 0.032,  1., 0., 0., 0.],
         }
         dobot_env.DobotEnv.__init__(
             self, 'dobot/pick_and_place.xml', has_object=True, block_gripper=False, n_substeps=20,

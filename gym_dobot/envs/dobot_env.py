@@ -154,14 +154,14 @@ class DobotEnv(robot_env.RobotEnv):
 
         if self.has_object:
             pos = np.array([0.8,0.685,0.22725])
-            size = np.array([0.335,0.165,0.21225])
+            size = np.array([0.335,0.165,0.21225]) - 0.025
             up = pos + size
             low = pos - size
             object_xpos = np.array([self.np_random.uniform(low[0],up[0]),self.np_random.uniform(low[1],up[1])])
             object_qpos = self.sim.data.get_joint_qpos('object0:joint')
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
-            object_qpos[2] += 0.05
+            object_qpos[2] = 0.032
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
             
 
@@ -180,14 +180,15 @@ class DobotEnv(robot_env.RobotEnv):
         # return goal.copy()
 
         pos = np.array([0.8,0.685,0.22725])
-        size = np.array([0.335,0.165,0.21225])
+        size = np.array([0.335,0.165,0.21225]) - 0.025
         up = pos + size
         low = pos - size
         goal = np.array([self.np_random.uniform(low[0],up[0]),self.np_random.uniform(low[1],up[1]),0.032])
 
         if self.has_object:
             if self.target_in_the_air and self.np_random.uniform() < 0.5:
-                goal[2] += self.np_random.uniform(0, 0.25)
+                pass
+                #goal[2] += self.np_random.uniform(0, 0.25)
 
         return goal.copy()
     def _is_success(self, achieved_goal, desired_goal):

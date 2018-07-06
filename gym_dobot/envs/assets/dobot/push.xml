@@ -26,6 +26,14 @@
 						<camera euler="-1.570796 0 0" fovy="50" name="top_cam" pos="0 0 -0.32"></camera>
 					</body>
 				</body>
+				<body name="tray" pos = "0 -0.215 0.01">
+					<geom size="0.355 0.205 0.001" type="box" mass="300" material="green_block_mat"></geom>
+					<geom size="0.355 0.005 0.045" type="box" mass="300" pos="0 0.205 0.045" material="green_block_mat"></geom>
+					<geom size="0.355 0.005 0.045" type="box" mass="300" pos="0 -0.205 0.045" material="green_block_mat"></geom>
+					<geom size="0.005 0.205 0.045" type="box" mass="300" pos="0.355 0 0.045" material="green_block_mat"></geom>
+					<geom size="0.005 0.205 0.045" type="box" mass="300" pos="-0.355 0 0.045" material="green_block_mat"></geom>
+
+				</body>
 			</body>
 		</body>
 
@@ -34,8 +42,8 @@
 
 		<body name="object0" pos="0.025 0.025 0.025">
 			<joint name="object0:joint" type="free" damping="0.01"></joint>
-			<geom size="0.02 0.02 0.02" type="box" condim="3" name="object0" material="block_mat" mass="2"></geom>
-			<site name="object0" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+			<geom size="0.0125 0.0125 0.0125" type="box" condim="3" name="object0" material="block_mat" mass="2"></geom>
+			<site name="object0" pos="0 0 0" size="0.0125 0.0125 0.0125" rgba="1 0 0 1" type="sphere"></site>
 		</body>
 
 		<light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"></light>
