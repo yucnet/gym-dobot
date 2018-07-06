@@ -8,7 +8,7 @@ class DobotClutterPushEnv(clutter_env.DobotClutterEnv, utils.EzPickle):
             'dobot:slide0': 0.8,
             'dobot:slide1': 1.2,
             'dobot:slide2': -0.04,
-            'object0:joint': [1.25, 0.53, 0.821,  1., 0., 0., 0.],
+            'object0:joint': [1.25, 0.53, 0.032,  1., 0., 0., 0.],
         }
         clutter_env.DobotClutterEnv.__init__(
             self, 'dobot/clutter_push.xml', has_object=True, block_gripper=True, n_substeps=20,

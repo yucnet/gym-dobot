@@ -146,31 +146,50 @@ class DobotClutterEnv(robot_env.RobotEnv):
         self.clutter()
 
         # Randomize start position of object.
+        # if self.has_object:
+        #     object_xpos = self.initial_gripper_xpos[:2]
+        #     while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.1:
+        #         object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
+        #         #object_xpos[:2] = np.clip(object_xpos,[0.6,0.55],[1.0,0.95,0.47])
+        #     object_qpos = self.sim.data.get_joint_qpos('object0:joint')
+        #     assert object_qpos.shape == (7,)
+        #     object_qpos[:2] = object_xpos
+        #     object_qpos[2] += 0.005
+        #     self.sim.data.set_joint_qpos('object0:joint', object_qpos)
+            
         if self.has_object:
-            object_xpos = self.initial_gripper_xpos[:2]
-            while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.1:
-                object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
-                #object_xpos[:2] = np.clip(object_xpos,[0.6,0.55],[1.0,0.95,0.47])
+            pos = np.array([0.8,0.685,0.22725])
+            size = np.array([0.335,0.165,0.21225]) - 0.025
+            up = pos + size
+            low = pos - size
+            object_xpos = np.array([self.np_random.uniform(low[0],up[0]),self.np_random.uniform(low[1],up[1])])
             object_qpos = self.sim.data.get_joint_qpos('object0:joint')
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
-            object_qpos[2] += 0.005
+            object_qpos[2] = 0.032
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
-            
 
         self.sim.forward()
         return True
 
     def clutter(self):
         count = self.clutter_num
-        for i in range(1,count+1):
-            object_name = "object{}:joint".format(i)
-            object_xpos = self.initial_gripper_xpos[:2]
-            while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.1:
-                object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
+        nums = list(range(1,41))
+        for i in range(count):
+            choice = self.np_random.choice(nums)
+            del nums[nums.index(choice)]
+            object_name = "object{}:joint".format(choice)
+            
+            pos = np.array([0.8,0.685,0.22725])
+            size = np.array([0.335,0.165,0.21225]) - 0.025
+            up = pos + size
+            low = pos - size
+            object_xpos = np.array([self.np_random.uniform(low[0],up[0]),self.np_random.uniform(low[1],up[1])])
+
             object_qpos = self.sim.data.get_joint_qpos(object_name)
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
+            object_qpos[2] = 0.032
             object_qpos[2] += self.np_random.uniform(0.005, 0.15)
             self.sim.data.set_joint_qpos(object_name, object_qpos)
             

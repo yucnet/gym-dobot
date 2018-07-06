@@ -187,10 +187,12 @@ class DobotEnv(robot_env.RobotEnv):
 
         if self.has_object:
             if self.target_in_the_air and self.np_random.uniform() < 0.5:
-                pass
-                #goal[2] += self.np_random.uniform(0, 0.25)
+                goal[2] += self.np_random.uniform(0, 0.25)
+        else:
+            goal[2] += self.np_random.uniform(0, 0.25)
 
         return goal.copy()
+        
     def _is_success(self, achieved_goal, desired_goal):
         d = goal_distance(achieved_goal, desired_goal)
         return (d < self.distance_threshold).astype(np.float32)
