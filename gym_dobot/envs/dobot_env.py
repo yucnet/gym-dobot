@@ -1,5 +1,5 @@
 import numpy as np
-
+from mujoco_py.modder import TextureModder
 from gym_dobot.envs import rotations, robot_env, utils
 
 
@@ -15,7 +15,7 @@ class DobotEnv(robot_env.RobotEnv):
     def __init__(
         self, model_path, n_substeps, gripper_extra_height, block_gripper,
         has_object, target_in_the_air, target_offset, obj_range, target_range,
-        distance_threshold, initial_qpos, reward_type,
+        distance_threshold, initial_qpos, reward_type,rand_dom,
     ):
         """Initializes a new Dobot environment.
 
@@ -42,6 +42,7 @@ class DobotEnv(robot_env.RobotEnv):
         self.target_range = target_range
         self.distance_threshold = distance_threshold
         self.reward_type = reward_type
+        self.rand_dom = rand_dom
 
         super(DobotEnv, self).__init__(
             model_path=model_path, n_substeps=n_substeps, n_actions=4,
@@ -127,9 +128,15 @@ class DobotEnv(robot_env.RobotEnv):
         lookat = self.sim.data.body_xpos[body_id]
         for idx, value in enumerate(lookat):
             self.viewer.cam.lookat[idx] = value
+        print(self.viewer.__dict__)
+        #self.viewer.cam.fixedcamid = 0
+        #self.viewer.cam.type = 2
+        #print(self.viewer.sim.render())
         self.viewer.cam.distance = 2.2
         self.viewer.cam.azimuth = 145.
         self.viewer.cam.elevation = -25.
+
+        self.viewer._hide_overlay = True
 
     def _render_callback(self):
         # Visualize target.
@@ -140,6 +147,11 @@ class DobotEnv(robot_env.RobotEnv):
 
     def _reset_sim(self):
         self.sim.set_state(self.initial_state)
+        if self.viewer!= None and self.rand_dom: 
+            modder = TextureModder(self.sim)
+            for name in self.sim.model.geom_names:
+                modder.rand_all(name)
+        
 
         # Randomize start position of object.
         # if self.has_object:

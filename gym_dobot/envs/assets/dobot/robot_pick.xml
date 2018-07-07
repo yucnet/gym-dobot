@@ -1,9 +1,9 @@
 <mujoco>
 	<body mocap="true" name="dobot:mocap" pos="1 1 1">
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.7" size="0.005 0.005 0.005" type="box"></geom>
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="1 0.005 0.005" type="box"></geom>
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="0.005 1 0.001" type="box"></geom>
-		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="0.005 0.005 1" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0" size="0.005 0.005 0.005" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0" size="1 0.005 0.005" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0" size="0.005 1 0.001" type="box"></geom>
+		<geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0" size="0.005 0.005 1" type="box"></geom>
 
 	</body>
 	<body childclass="dobot:fetch" name="dobot:base_link" pos="0 0 0.1" euler="0 0 0">
@@ -14,7 +14,7 @@
 			<geom mesh="dobot:base_link" name="dobot:base_link" material="arm_mat" class="dobot:white"></geom>
 			<body name="dobot:lift_link" pos="0 0 0.066" euler="0 0 0">
 				<inertial diaginertia="1.2869 1.2236 0.9868" mass="0.5" pos="0 0 0"></inertial>
-				<geom mesh="dobot:lift_link" name="dobot:lift_link" material="dobot_mat" class="dobot:white"></geom>
+				<geom mesh="dobot:lift_link" name="dobot:lift_link" material="arm_mat" class="dobot:white"></geom>
 				<joint name="dobot:base_pan" type="hinge" pos="0 0 0" axis="0 0 1" range="-1.57 1.57" limited="true"/>
 				<body name="dobot:rear_arm_link" pos="0 0 0.16" euler="0 0 0">
 					<inertial diaginertia="1.2869 1.2236 0.9868" mass="0.85" pos="0 0 0" ></inertial>

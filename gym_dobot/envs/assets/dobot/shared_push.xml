@@ -9,10 +9,14 @@
         <texture name="pink_block" file="block_pink.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
         <texture name="magenta_block" file="block_magenta.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture>
         <texture name="arm_tex" file="arm.png" type="2d"></texture>
+        <texture name="base_tex" file="base.png" type="2d"></texture>
+        <texture name="base_blue_tex" file="base_blue.png" type="2d"></texture>
+        <texture name="base_green_tex" file="base_green.png" type="2d"></texture>
         <texture name="gripper_tex" file="gripper.png" type="2d"></texture>
 
-        <material name="table_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.6 0.6 0.6 1"></material>
-        <material name="floor_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.05 0.05 0.7 0.4"></material>
+        <material name="table_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.6 0.6 0.6 1" texture="base_tex"></material>
+        <material name="floor_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="base_blue_tex"></material>
+        <material name="tray_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="base_green_tex"></material>
         <material name="block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="texture_block"></material>
         <material name="red_block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="red_block"></material>
         <material name="yellow_block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="yellow_block"></material>
@@ -20,8 +24,8 @@
         <material name="blue_block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="blue_block"></material>
         <material name="pink_block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="pink_block"></material>
         <material name="magenta_block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 1 1" texture="magenta_block"></material>
-        <material name="puck_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"></material>
-        <material name="dobot_mat" shininess="0.03" specular="0.4"></material>
+        <material name="puck_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="base_tex"></material>
+        <material name="dobot_mat" shininess="0.03" specular="0.4" rgba ="1 1 1 0"></material>
         <material name="arm_mat" shininess="0.03" specular="0.4" texture="arm_tex"></material>
         <material name="gripper_mat" shininess="0.03" specular="0.4" texture="gripper_tex"></material>
 
