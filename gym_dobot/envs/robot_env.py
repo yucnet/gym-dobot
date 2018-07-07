@@ -8,6 +8,7 @@ from gym.utils import seeding
 
 try:
     import mujoco_py
+    from mujoco_py.modder import TextureModder
 except ImportError as e:
     raise error.DependencyNotInstalled("{}. (HINT: you need to install mujoco_py, and also perform the setup instructions here: https://github.com/openai/mujoco-py/.)".format(e))
 
@@ -23,6 +24,7 @@ class RobotEnv(gym.GoalEnv):
 
         model = mujoco_py.load_model_from_path(fullpath)
         self.sim = mujoco_py.MjSim(model, nsubsteps=n_substeps)
+        self.modder = TextureModder(self.sim)
         self.viewer = None
 
         self.metadata = {

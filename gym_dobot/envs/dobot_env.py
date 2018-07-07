@@ -1,5 +1,4 @@
 import numpy as np
-from mujoco_py.modder import TextureModder
 from gym_dobot.envs import rotations, robot_env, utils
 
 
@@ -32,6 +31,7 @@ class DobotEnv(robot_env.RobotEnv):
             distance_threshold (float): the threshold after which a goal is considered achieved
             initial_qpos (dict): a dictionary of joint names and values that define the initial configuration
             reward_type ('sparse' or 'dense'): the reward type, i.e. sparse or dense
+            rand_dom ('False' or 'True'): Whether to use domain randomization
         """
         self.gripper_extra_height = gripper_extra_height
         self.block_gripper = block_gripper
@@ -128,7 +128,7 @@ class DobotEnv(robot_env.RobotEnv):
         lookat = self.sim.data.body_xpos[body_id]
         for idx, value in enumerate(lookat):
             self.viewer.cam.lookat[idx] = value
-        print(self.viewer.__dict__)
+        #print(self.viewer.__dict__)
         #self.viewer.cam.fixedcamid = 0
         #self.viewer.cam.type = 2
         #print(self.viewer.sim.render())
@@ -148,9 +148,8 @@ class DobotEnv(robot_env.RobotEnv):
     def _reset_sim(self):
         self.sim.set_state(self.initial_state)
         if self.viewer!= None and self.rand_dom: 
-            modder = TextureModder(self.sim)
             for name in self.sim.model.geom_names:
-                modder.rand_all(name)
+                self.modder.rand_all(name)
         
 
         # Randomize start position of object.
