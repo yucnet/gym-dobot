@@ -18,7 +18,7 @@
 			<site name="target0" pos="0 0 0.5" size="0.0125 0.0125 0.0125" rgba="1 0 0 1" type="sphere"></site>
 			<body pos="0 0.15 0" name="table0">
 				<geom name="table0" size="0.55 0.7 0.01" type="box" mass="2000" material="table_mat"></geom>
-				<camera euler="0.78 0 0" fovy="40" name="top_cam" pos="0 -1 1"></camera>
+				<camera euler="0.78 0 0" fovy="40" name="camera0" pos="0 -1 1" mode="targetbody" target="floor0"></camera>
 			</body>
 		</body>
 

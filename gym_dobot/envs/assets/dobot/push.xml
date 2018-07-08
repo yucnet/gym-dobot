@@ -25,7 +25,7 @@
 					<geom size="0.005 0.205 0.045" type="box" mass="300" pos="0.355 0 0.045" material="tray_mat"></geom>
 					<geom size="0.005 0.205 0.045" type="box" mass="300" pos="-0.355 0 0.045" material="tray_mat"></geom>
 				</body>
-				<camera euler="0.78 0 0" fovy="40" name="top_cam" pos="0 -1 1"></camera>
+				<camera euler="0.78 0 0" fovy="40" name="camera0" pos="0 -1 1" mode="targetbody" target="tray"></camera>
 			</body>
 		</body>
 
