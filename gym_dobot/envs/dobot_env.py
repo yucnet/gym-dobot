@@ -129,13 +129,14 @@ class DobotEnv(robot_env.RobotEnv):
         for idx, value in enumerate(lookat):
             self.viewer.cam.lookat[idx] = value
         #print(self.viewer.__dict__)
-        #self.viewer.cam.fixedcamid = 0
-        #self.viewer.cam.type = 2
+
         #print(self.viewer.sim.render())
         self.viewer.cam.distance = 2.2
         self.viewer.cam.azimuth = 145.
         self.viewer.cam.elevation = -25.
 
+        # self.viewer.cam.fixedcamid = 0
+        # self.viewer.cam.type = 2
         self.viewer._hide_overlay = True
 
     def _render_callback(self):

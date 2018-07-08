@@ -4,6 +4,9 @@
 	<option timestep="0.002">
 		<flag warmstart="enable"></flag>
 	</option>
+	<visual>
+		<quality shadowsize="4096"></quality>
+	</visual>
 
 	<size njmax="1500" nconmax="500"></size>
 

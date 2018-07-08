@@ -4,6 +4,9 @@
 	<option timestep="0.002">
 		<flag warmstart="enable"></flag>
 	</option>
+	<visual>
+		<quality shadowsize="4096"></quality>
+	</visual>
 
 	<include file="shared_pick.xml"></include>
 	
