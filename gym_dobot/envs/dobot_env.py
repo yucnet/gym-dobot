@@ -151,12 +151,16 @@ class DobotEnv(robot_env.RobotEnv):
         if self.viewer!= None and self.rand_dom: 
             for name in self.sim.model.geom_names:
                 self.modder.rand_all(name)
-                
-            range=0.1
-            pos = np.array([0,-1,1]) + self.np_random.uniform(-range,range,size=3)
-            print(pos)
+
+            #Camera
+            pos = np.array([0,-1,1]) + self.np_random.uniform(-0.1,0.1,size=3)
             self.cam_modder.set_pos('camera0',pos)
 
+            #Light
+            self.light_modder.set_castshadow('light0',1)
+            pos = np.array([0.8,0.9,3])
+            pos[:2] = pos[:2] + self.np_random.uniform(-0.85,0.85,size=2)
+            self.light_modder.set_pos('light0',pos)
         
 
         # Randomize start position of object.
