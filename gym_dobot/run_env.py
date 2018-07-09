@@ -1,8 +1,7 @@
 import gym
 import click
 import gym_dobot.envs as envs
-from mujoco_py.modder import TextureModder
-
+from scipy.misc import imsave
 
 
 @click.command()
@@ -21,7 +20,9 @@ def main(env,render,steps,clutter,rand_dom):
         observation = env.reset()
         for i in range(steps):
             if render:
-                env.render()     
+                env.render()
+                #img = env.capture()
+                #imsave("image.png", img)
             action = env.action_space.sample()
             observation, reward, done, info = env.step(action)
 

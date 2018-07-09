@@ -1,5 +1,6 @@
 import numpy as np
 from gym_dobot.envs import rotations, robot_env, utils
+from mujoco_py.generated import const
 
 
 def goal_distance(goal_a, goal_b):
@@ -240,3 +241,12 @@ class DobotEnv(robot_env.RobotEnv):
         #print(self.initial_gripper_xpos)
         if self.has_object:
             self.height_offset = self.sim.data.get_site_xpos('object0')[2]
+
+    def capture(self):
+        if self.viewer == None:
+            pass
+        else:
+            self.viewer.cam.fixedcamid = 0
+            self.viewer.cam.type = const.CAMERA_FIXED
+            img = self.viewer._read_pixels_as_in_window()
+            return img
